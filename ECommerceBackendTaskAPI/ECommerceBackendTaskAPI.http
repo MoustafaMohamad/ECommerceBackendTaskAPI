@@ -1,0 +1,6 @@
+@ECommerceBackendTaskAPI_HostAddress = http://localhost:5245
+
+GET {{ECommerceBackendTaskAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
