@@ -27,5 +27,7 @@ global using ECommerceBackendTaskAPI.Features.Orders.GetCustomerOrders.Dtos;
 global using ECommerceBackendTaskAPI.Common.ValidationResults;
 global using FluentValidation;
 global using ECommerceBackendTaskAPI.Features.Common.OrderLineItems.Validators;
-
+global using AutoMapper;
+global using ECommerceBackendTaskAPI.Features.Orders.CreateOrder;
+global using ECommerceBackendTaskAPI.Features.Orders.GetOrders.Dtos;
 global using ECommerceBackendTaskAPI.Common.Behaviors;

@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace ECommerceBackendTaskAPI.Common
+﻿namespace ECommerceBackendTaskAPI.Common
 {
     public static class PagedListQueryableExtensions
     {
 
         public class PagedList<T>
         {
-            private IEnumerable<T> items;
+            public IEnumerable<T> items;
             private int count;
             private int page;
             private int pageSize;
@@ -39,7 +37,7 @@ namespace ECommerceBackendTaskAPI.Common
             return new(Enumerable.Empty<T>(), 0, 0, 0);
         }
 
-     
+
 
 
 
