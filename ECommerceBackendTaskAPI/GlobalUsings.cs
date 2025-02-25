@@ -31,3 +31,4 @@ global using AutoMapper;
 global using ECommerceBackendTaskAPI.Features.Orders.CreateOrder;
 global using ECommerceBackendTaskAPI.Features.Orders.GetOrders.Dtos;
 global using ECommerceBackendTaskAPI.Common.Behaviors;
+global using ECommerceBackendTaskAPI.Features.Orders.GetOrders.Queries;
