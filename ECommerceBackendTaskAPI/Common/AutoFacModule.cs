@@ -1,6 +1,6 @@
 ﻿namespace ECommerceBackendTaskAPI.Common
 {
-    public class AutoFacModule : Module
+    public class AutoFacModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {

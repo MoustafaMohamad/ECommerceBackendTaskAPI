@@ -1,6 +1,3 @@
-using AutoMapper;
-using System.Reflection;
-
 namespace ECommerceBackendTaskAPI
 {
     public class Program
@@ -14,9 +11,9 @@ namespace ECommerceBackendTaskAPI
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
 
-            builder.Services.AddMediatR()
+            builder.Services.AddSwagger()
+                .AddMediatR()
                 .AddAutoMapper(typeof(MappingProfile))
                 .AddFluentValidation(Assembly.GetExecutingAssembly());
 

@@ -32,3 +32,8 @@ global using ECommerceBackendTaskAPI.Features.Orders.CreateOrder;
 global using ECommerceBackendTaskAPI.Features.Orders.GetOrders.Dtos;
 global using ECommerceBackendTaskAPI.Common.Behaviors;
 global using ECommerceBackendTaskAPI.Features.Orders.GetOrders.Queries;
+global using Swashbuckle.AspNetCore.Annotations;
+global using Microsoft.OpenApi.Models;
+global using Swashbuckle.AspNetCore.Filters;
+global using System.Reflection;
+global using ECommerceBackendTaskAPI.Configurations;

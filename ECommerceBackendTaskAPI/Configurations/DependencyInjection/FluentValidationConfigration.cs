@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace ECommerceBackendTaskAPI.Configurations.DependencyInjection
 {
-    public static class FluentValidationConfig
+    public static class FluentValidationConfigration
     {
         public static IServiceCollection AddFluentValidation(this IServiceCollection services, Assembly assembly)
         {
