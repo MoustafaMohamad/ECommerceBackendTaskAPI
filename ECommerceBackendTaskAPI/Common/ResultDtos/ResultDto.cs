@@ -1,14 +1,9 @@
 ﻿namespace ECommerceBackendTaskAPI.Common.ResultDtos
 {
-    public class Result
+    public class ResultDto<T>
     {
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
-    }
-
-    public class ResultDto<T> : Result
-    {
-
         public T Data { get; set; }
         public ErrorCode ErrorCode { get; set; }
 

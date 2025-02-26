@@ -1,7 +1,9 @@
 ﻿namespace ECommerceBackendTaskAPI.Common.ResultViewModels
 {
-    public class ResultViewModel : Result
+    public class ResultViewModel
     {
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
         public dynamic Data { get; set; }
 
         public ErrorCode ErrorCode { get; set; }

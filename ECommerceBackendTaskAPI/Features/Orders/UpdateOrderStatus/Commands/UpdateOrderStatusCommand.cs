@@ -1,7 +1,4 @@
-﻿
-using ECommerceBackendTaskAPI.Common.ResultDtos;
-
-namespace ECommerceBackendTaskAPI.Features.Orders.UpdateOrderStatus.Commands
+﻿namespace ECommerceBackendTaskAPI.Features.Orders.UpdateOrderStatus.Commands
 {
     public record UpdateOrderStatusCommand(int OrderId, OrderStatus Status) : IRequest<ResultDto<bool>>;
 
@@ -36,9 +33,11 @@ namespace ECommerceBackendTaskAPI.Features.Orders.UpdateOrderStatus.Commands
             {
                 ID = order.ID,
                 Status = request.Status,
-            }; 
+            };
 
-             _repository.UpdateIncluded(orderUpdated , nameof(Order.Status));
+            _repository.UpdateIncluded(orderUpdated, nameof(Order.Status));
+
+            await _mediator.Publish(new OrderStatusUpdatedEvent(order.ID, request.Status, DateTime.Now), cancellationToken);
 
             return ResultDto<bool>.Sucess(true, "Order status updated successfully");
 

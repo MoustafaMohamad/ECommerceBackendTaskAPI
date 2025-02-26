@@ -21,8 +21,8 @@ namespace ECommerceBackendTaskAPI.Common.Helpers
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Product.Description))
                 .ForMember(dest => dest.ProducPrice, opt => opt.MapFrom(src => src.Product.Price));
 
-            CreateMap<OrderLineItem, ProductOfOrderLineItemDto>();
 
+            CreateMap<OrderLineItemDto, OrderLineItem>().ReverseMap();
 
 
             CreateMap<Order, GetCustomerOrderDto>()
@@ -36,6 +36,12 @@ namespace ECommerceBackendTaskAPI.Common.Helpers
                .ForMember(dest => dest.OrderDate, opt => opt.MapFrom(src => src.OrderDate))
                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount))
                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
+
+
+            CreateMap<OrderLineItem, ProductOfOrderLineItemDto>()
+            .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
+            .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity));
+
         }
     }
 }

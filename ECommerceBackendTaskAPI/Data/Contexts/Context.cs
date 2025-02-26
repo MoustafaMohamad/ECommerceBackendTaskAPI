@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-
-namespace ECommerceBackendTaskAPI.Data.Contexts
+﻿namespace ECommerceBackendTaskAPI.Data.Contexts
 {
-    public class Context :DbContext
+    public class Context : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }

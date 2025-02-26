@@ -1,6 +1,8 @@
-﻿namespace ECommerceBackendTaskAPI.Features.Orders.CreateOrder.Commands
+﻿using ECommerceBackendTaskAPI.Features.Orders.Events;
+
+namespace ECommerceBackendTaskAPI.Features.Orders.CreateOrder.Commands
 {
-    public record CreateOrderCommand(int CustomerId,decimal TotalAmount, IEnumerable<OrderLineItemDto> OrderLineItems) :IRequest<ResultDto<bool>>;
+    public record CreateOrderCommand(int CustomerId, decimal TotalAmount, IEnumerable<OrderLineItemDto> OrderLineItems) : IRequest<ResultDto<bool>>;
 
     public class CreateOrderCommandHandeler : BaseRequestHandler<Order, CreateOrderCommand, ResultDto<bool>>
     {
@@ -15,14 +17,16 @@
             {
                 CustomerId = request.CustomerId,
                 TotalAmount = request.TotalAmount,
-                OrderDate=DateTime.Now,
-                OrderLineItems=request.OrderLineItems.AsQueryable().Map<OrderLineItem>().ToList(),
-                Status=OrderStatus.Pending
+                OrderDate = DateTime.Now,
+                OrderLineItems = request.OrderLineItems.AsQueryable().Map<OrderLineItem>().ToList(),
+                Status = OrderStatus.Pending
 
             };
             var result = await _repository.AddAsync(newOrder);
 
-            return ResultDto<bool>.Sucess(true); 
+            await _mediator.Publish(new OrderCreatedEvent(result, request.TotalAmount));
+
+            return ResultDto<bool>.Sucess(true);
         }
     }
 }

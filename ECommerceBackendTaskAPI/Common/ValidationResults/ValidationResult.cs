@@ -1,7 +1,9 @@
 ﻿namespace ECommerceBackendTaskAPI.Common.ValidationResults
 {
-    public class ValidationResult<T> : Result
+    public class ValidationResult<T>
     {
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
         public T Data { get; set; }
         public Error[] Errors { get; set; }
 
