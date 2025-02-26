@@ -3,10 +3,13 @@
     public class GlobalErrorHandlerMiddleware
     {
         RequestDelegate _next;
+        private readonly IMediator _mediator;
 
-        public GlobalErrorHandlerMiddleware(RequestDelegate next)
+
+        public GlobalErrorHandlerMiddleware(RequestDelegate next, IMediator mediator)
         {
             _next = next;
+            _mediator = mediator;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -25,7 +28,8 @@
                     message = businessException.Message;
                     errorCode = businessException.ErrorCode;
                 }
-
+                var loggingMessage = $"Error Occured: {ex.Message}";
+                await _mediator.Send(new AddLogCommand(LogLevels.Error, loggingMessage));
                 var result = ResultViewModel.Faliure(errorCode, message);
 
                 await context.Response.WriteAsJsonAsync(result);
