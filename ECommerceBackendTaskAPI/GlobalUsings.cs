@@ -37,8 +37,8 @@ global using Microsoft.OpenApi.Models;
 global using Swashbuckle.AspNetCore.Filters;
 global using System.Reflection;
 global using ECommerceBackendTaskAPI.Configurations;
-global using ECommerceBackendTaskAPI.Features.Orders.Events;
+global using ECommerceBackendTaskAPI.Features.Orders.CreateOrder.Events;
 global using ECommerceBackendTaskAPI.Features.Common.AppLogs.Commands;
 global using ECommerceBackendTaskAPI.Common.Enums;
-
+global using ECommerceBackendTaskAPI.Features.Orders.CancelOrder.Events;
 global using ECommerceBackendTaskAPI.Features.Orders.UpdateOrderStatus.Events;

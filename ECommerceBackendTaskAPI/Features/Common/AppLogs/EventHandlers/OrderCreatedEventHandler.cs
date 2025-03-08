@@ -1,4 +1,6 @@
-﻿namespace ECommerceBackendTaskAPI.Features.Common.AppLogs.EventHandlers
+﻿using ECommerceBackendTaskAPI.Features.Orders.CreateOrder.Events;
+
+namespace ECommerceBackendTaskAPI.Features.Common.AppLogs.EventHandlers
 {
     public class OrderCreatedEventHandler : BaseNotificationHandler<OrderCreatedEvent>
     {
