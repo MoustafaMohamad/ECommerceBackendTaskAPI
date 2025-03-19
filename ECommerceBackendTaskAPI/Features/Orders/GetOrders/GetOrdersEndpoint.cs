@@ -32,7 +32,7 @@
         public async Task<ResultViewModel> GetAllOrdersAsync([FromQuery] int page, [FromQuery] int pageSize)
         {
             var result = await _mediator.Send(new GetAllOrdersQuery(page, pageSize));
-            return ResultViewModel.Sucess(result.Data.items);
+            return ResultViewModel.Sucess(result.Data);
         }
 
 

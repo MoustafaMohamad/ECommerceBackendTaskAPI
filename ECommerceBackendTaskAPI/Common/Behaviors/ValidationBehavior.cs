@@ -23,13 +23,14 @@ namespace ECommerceBackendTaskAPI.Common.Behaviors
                     _validators.Select(validator => validator.ValidateAsync(context, cancellationToken)));
 
 
-                Error[] errors = _validators
-                     .Select(validator => validator.Validate(request))
-                     .SelectMany(validationResult => validationResult.Errors)
+                var errors = validationFailures
+                    .SelectMany(validationResult => validationResult.Errors)
                      .Where(validationFailure => validationFailure is not null)
-                     .Select(failure => new Error(
+                     .Select(failure => new
+                     {
                          failure.PropertyName,
-                         failure.ErrorMessage))
+                         failure.ErrorMessage
+                     })
                      .ToArray();
 
                 if (errors.Any())

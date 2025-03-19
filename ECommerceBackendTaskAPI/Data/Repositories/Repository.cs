@@ -23,21 +23,24 @@ namespace ECommerceBackendTaskAPI.Data.Repositories
 
         public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
         {
-           return _context.Set<T>().Where<T>(predicate);
+            return _context.Set<T>().Where<T>(predicate);
         }
 
         public IQueryable<T> GetAll()
         {
-            return _context.Set<T>(); 
+            return _context.Set<T>();
         }
-        
+
         public async Task<T?> GetByIdAsync(int id)
         {
-            return await _context.Set<T>().FirstOrDefaultAsync(a =>a.ID == id);
+            return await _context.Set<T>().FirstOrDefaultAsync(a => a.ID == id);
         }
 
         public void UpdateIncluded(T entity, params string[] updatedProperties)
         {
+            if (!_context.Set<T>().Any(x => x.ID == entity.ID))
+                return;
+
             T local = _context.Set<T>().Local.FirstOrDefault(x => x.ID == entity.ID);
 
             EntityEntry entityEntry;
@@ -64,7 +67,7 @@ namespace ECommerceBackendTaskAPI.Data.Repositories
         public async Task DeleteAsync(T entity)
         {
             entity.IsDeleted = true;
-             UpdateIncluded(entity , nameof(entity.IsDeleted));
+            UpdateIncluded(entity, nameof(entity.IsDeleted));
         }
 
         public async Task AddRangeAsync(IEnumerable<T> entities)
@@ -72,6 +75,6 @@ namespace ECommerceBackendTaskAPI.Data.Repositories
             await _context.Set<T>().AddRangeAsync(entities);
         }
 
-      
+
     }
 }
